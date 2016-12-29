@@ -162,6 +162,8 @@
                         
                             <li><a href="/categories/swim/">游泳</a></li>
                         
+                            <li><a href="/categories/technology/">技术</a></li>
+                        
                         </ul>
                     </nav>
                     <nav class="header-nav">
@@ -180,7 +182,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/书籍/">书籍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/伸手党/">伸手党</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/健身/">健身</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游泳/">游泳</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自由泳/">自由泳</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自证预言/">自证预言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蛙泳/">蛙泳</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/运动/">运动</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngrok/">ngrok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/书籍/">书籍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/伸手党/">伸手党</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/健身/">健身</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内网映射/">内网映射</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游泳/">游泳</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自由泳/">自由泳</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自证预言/">自证预言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蛙泳/">蛙泳</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/运动/">运动</a></li></ul>
                     </div>
                 </section>
                 
@@ -227,6 +229,8 @@
                 
                     <li><a href="/categories/swim/">游泳</a></li>
                 
+                    <li><a href="/categories/technology/">技术</a></li>
+                
                 <div class="clearfix"></div>
                 </ul>
             </nav>
@@ -246,6 +250,249 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-dajian-ngrok" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/28/dajian-ngrok/" class="article-date">
+      <time datetime="2016-12-28T08:07:56.000Z" itemprop="datePublished">2016-12-28</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/28/dajian-ngrok/">从零教你搭建ngrok服务，解决外网调试本地站点</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>官网地址：<a href="https://ngrok.com/" target="_blank" rel="external">https://ngrok.com/</a></p>
+<p><strong>什么是ngrok呢？ngrok是一个反向代理，它能够让你本地的web服务或tcp服务通过公共的端口和外部建立一个安全的通道，使得外网可以访问本地的计算机服务。</strong> 也就是说，我们提供的服务（比如web站点）无需搭建在外部服务器，只要通过ngrok把站点映射出去，别人即可直接访问到我们的服务。</p>
+<p>有做过微信公众号开发的人，对它应该不陌生。在微信公众号开发中，因为用户跟微信公众号产生的交互行为，微信会把用户的相关信息推送到我们自己的服务器，而这个推送的前提是微信能够访问到我们的服务，如果服务在本地，那微信当然无法推送给我们，这使得开发功能的时候调试相当麻烦。幸好有ngrok这个工具，我们可以使用ngrok把本地站点映射出去，解决微信推送给我们的用户信息等消息进行实时本地调试。</p>
+<p>很不巧的是，目前国内访问该网站提供的服务相当不稳定，经常连接不上，出于什么原因，你懂得。虽然国内有不少第三方的ngrok服务提供，如natapp、花生壳，但不敢确定它们的稳定性。而QQ浏览器其实也有提供这样的服务专门用于开发微信公众号，不过太过局限，只能用于微信开发，想要做其他用途就不行了。</p>
+<p>好在ngrok是开源的，我们可以去Github上下载它的源码，在自己的外网服务器上搭建这样一个服务。</p>
+<p>源码地址：<a href="https://github.com/inconshreveable/ngrok" target="_blank" rel="external">https://github.com/inconshreveable/ngrok</a></p>
+<p>下面，我们开始搭建ngrok服务。</p>
+<h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><p>搭建ngrok服务需要有一天外网服务器及一个域名解析到外网服务器上。</p>
+<p>本文基于外网的一台VPS，系统版本为CentOS 6.6的linux服务器搭建ngrok服务。VPS有很多地方可以购买，如阿里云和腾讯云的，当然国内的这些相对比较贵，但速度肯定够快。而我买的是国外“<a href="https://bandwagonhost.com/" target="_blank" rel="external">搬瓦工</a>”的vps，还可以做其他方面需求都使用。</p>
+<p>至于域名，在哪里买都一样了，有了域名之后，<strong>建立两个A记录，把域名解析到服务器上，用来关联ngrok服务。</strong></p>
+<p>比如我的域名是：morongs.com，那么建立 <strong>ngrok.morongs.com</strong> 和<strong> *.ngrok.morongs.com </strong> 解析到vps服务器上。</p>
+<p><img src="/images/ngrok-jiexi.png" alt="解析"></p>
+<h2 id="二、搭建ngrok服务"><a href="#二、搭建ngrok服务" class="headerlink" title="二、搭建ngrok服务"></a>二、搭建ngrok服务</h2><h3 id="1-安装go语言环境"><a href="#1-安装go语言环境" class="headerlink" title="1. 安装go语言环境"></a>1. 安装go语言环境</h3><p>ngrok是基于go语言开发的，所以需要先安装go语言开发环境，CentOS可以使用yum安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ yum install golang</div></pre></td></tr></table></figure>
+<p>如果没有权限，请使用 sudo 安装，安装完成之后，执行 go version 看到如下信息，证明安装成功：<br>go version go1.7.3 linux/amd64</p>
+<p>安装好后，需设置go环境变量，在 <code>~/.bash_profile</code> 或 <code>~/.zshrc</code> 文件添加如下代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export GOPATH=$HOME/go</div><div class="line">PATH=$PATH:$HOME/.local/bin:$HOME/bin:$GOPATH/bin</div></pre></td></tr></table></figure>
+<p>保存后，重新加载配置文件 <code>source ~/.bash_profile</code><br>执行完成后，<code>echo $GOPATH</code> 可查看go路径，或通过 <code>go env</code> 查看是否配置生效。</p>
+<h3 id="2-安装git"><a href="#2-安装git" class="headerlink" title="2. 安装git"></a>2. 安装git</h3><p>git可以通过：<code>yum install git</code> 安装，但我们系统版本默认安装下来的是 1.7.x 版本，这个版本使用的过程中出现一些奇怪的问题，比如在编译ngrokd服务端时，git无法通过https获取到代码内容，如果你没有这种情况可跳过。</p>
+<p>如果存在git版本问题，可先通过 <code>yum remove git</code> 移除已有git版本，再通过源码安装编译，具体步骤如下：</p>
+<p>1) 安装编译git时需要的包：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel</div><div class="line">$ yum install  gcc perl-ExtUtils-MakeMaker</div></pre></td></tr></table></figure>
+<p>2) 下载git源码，并解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cd /usr/src</div><div class="line">$ wget https://www.kernel.org/pub/software/scm/git/git-2.5.0.tar.gz</div><div class="line">$ tar xzf git-2.5.0.tar.gz</div></pre></td></tr></table></figure>
+<p>3) 编译安装并设置环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ cd git-2.5.0</div><div class="line">$ make prefix=/usr/local/git all</div><div class="line">$ make prefix=/usr/local/git install</div><div class="line">$ echo &quot;export PATH=$PATH:/usr/local/git/bin&quot; &gt;&gt; ~/.bash_profile</div><div class="line">$ source ~/.bash_profile</div></pre></td></tr></table></figure>
+<p>4) 查看是否安装成功</p>
+<p><code>git --version</code>，返回 git version 2.5.0</p>
+<h3 id="3-下载ngrok源码"><a href="#3-下载ngrok源码" class="headerlink" title="3. 下载ngrok源码"></a>3. 下载ngrok源码</h3><p>新建一个目录，并clone一份源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ mkdir ~/go/src/github.com/inconshreveable</div><div class="line">$ git clone https://github.com/inconshreveable/ngrok.git</div><div class="line">$ export GOPATH=~/go/src/github.com/inconshreveable/ngrok</div></pre></td></tr></table></figure>
+<p>目前最新的ngrok文件已经把googlecode替换成GitHub地址了，如果仍然是googlecode，则把 src/ngrok/log/logger.go 文件中的：<br><code>code.google.com/p/log4go</code> 修改为：<code>github.com/alecthomas/log4go</code></p>
+<h3 id="4-生成自签名证书"><a href="#4-生成自签名证书" class="headerlink" title="4. 生成自签名证书"></a>4. 生成自签名证书</h3><p>使用ngrok.com官方服务时，我们使用的是官方的SSL证书。自己建立ngrok服务，需要我们生成自己的证书，并提供携带该证书的ngrok客户端。</p>
+<p>证书生成过程需要有自己的一个基础域名，官网随机生成的地址，如：693c358d.ngrok.com，基础域名就是ngrok.com。而在上文中提到的二级域名 ngrok.morongs.com 就是用来作为这次要提供的基础域名。如果你的域名是 abc.com，那么域名基础域名可以设置为 ngrok.abc.com。</p>
+<p>以我的基础域名为例（注意替换成自己的域名），生成证书过程如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ cd ngrok</div><div class="line">$ openssl genrsa -out rootCA.key 2048</div><div class="line">$ openssl req -x509 -new -nodes -key rootCA.key -subj &quot;/CN=ngrok.morongs.com&quot; -days 5000 -out rootCA.pem</div><div class="line">$ openssl genrsa -out device.key 2048</div><div class="line">$ openssl req -new -key device.key -subj &quot;/CN=ngrok.morongs.com&quot; -out device.csr</div><div class="line">$ openssl x509 -req -in device.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out device.crt -days 5000</div></pre></td></tr></table></figure>
+<p>执行完成以上命令后，在ngrok目录下，会新生成6个文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-rw-r--r-- 1 mrnick mrnick   997 Dec 18 04:40 device.crt</div><div class="line">-rw-r--r-- 1 mrnick mrnick   903 Dec 18 04:40 device.csr</div><div class="line">-rw-r--r-- 1 mrnick mrnick  1675 Dec 18 04:39 device.key</div><div class="line">-rw-r--r-- 1 mrnick mrnick  1679 Dec 18 04:39 rootCA.key</div><div class="line">-rw-r--r-- 1 mrnick mrnick  1115 Dec 18 04:39 rootCA.pem</div><div class="line">-rw-r--r-- 1 mrnick mrnick    17 Dec 18 04:40 rootCA.srl</div></pre></td></tr></table></figure>
+<p>我们在编译可执行文件之前，需要把生成的证书分别替换到 assets/client/tls和assets/server/tls中，这两个目录分别存放着ngrok和ngrokd的默认证书。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cp rootCA.pem assets/client/tls/ngrokroot.crt</div><div class="line">$ cp device.crt assets/server/tls/snakeoil.crt</div><div class="line">$ cp device.key assets/server/tls/snakeoil.key</div></pre></td></tr></table></figure>
+<h3 id="5-编译ngrokd和ngrok"><a href="#5-编译ngrokd和ngrok" class="headerlink" title="5. 编译ngrokd和ngrok"></a>5. 编译ngrokd和ngrok</h3><p>首先需要知道，ngrokd 为服务端的执行文件，ngrok为客户端的执行文件。</p>
+<p>接下来我们来编译ngrokd，在ngrok目录下，执行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ make release-server</div></pre></td></tr></table></figure>
+<p>编译过程需要等待一会，因为需要通过git安装相关依赖包。如果提示没有权限，使用 sudo 命令来安装。</p>
+<p>由于客户端的平台版本较多，我们需要交叉编译来选择生成的平台。<br>以windows、arm、linux版本编译，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ GOOS=linux GOARCH=amd64 make release-client</div><div class="line">$ GOOS=windows GOARCH=amd64 make release-client</div><div class="line">$ GOOS=linux GOARCH=arm make release-client</div></pre></td></tr></table></figure>
+<p>不同平台使用不同的 GOOS 和 GOARCH，GOOS为go编译出来的操作系统 (windows,linux,darwin)，GOARCH, 对应的构架 (386,amd64,arm)</p>
+<pre><code>Linux 平台 32 位系统：GOOS=linux GOARCH=386
+Linux 平台 64 位系统：GOOS=linux GOARCH=amd64
+
+Windows 平台 32 位系统：GOOS=windows GOARCH=386
+Windows 平台 64 位系统：GOOS=windows GOARCH=amd64
+
+MAC 平台 32 位系统：GOOS=darwin GOARCH=386
+MAC 平台 64 位系统：GOOS=darwin GOARCH=amd64
+
+ARM 平台：GOOS=linux GOARCH=arm
+</code></pre><p>通过上面的步骤，将生成所有客户端文件，客户端文件放在对于的文件夹中，如windows 64位的为：windows_amd64，linux客户端在bin目录下的ngrok文件。当然，也可以简单的使用 <code>$ make release-client</code> 进行编译成默认的ngrok客户端文件。</p>
+<p>完成之后，可以在服务器上把ngrok客户端打个包，通过scp等工具把它下载到对于的平台。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ scp mrnick@25.25.25.25:/mrnick/go/src/github.com/morongs/ngrok/bin/ngrok /Users/morong/Documents/</div></pre></td></tr></table></figure>
+<p>连接成功输入密码下载文件，如果不是默认端口，则使用-P设置端口，如 <code>scp -P xxx user@ip:/path path</code> 连接linux服务器。具体命令参考<a href="https://www.cnblogs.com/ghj1976/archive/2013/04/19/3030159.html" target="_blank" rel="external">scp相关介绍</a></p>
+<h3 id="6-启动ngrokd服务器"><a href="#6-启动ngrokd服务器" class="headerlink" title="6. 启动ngrokd服务器"></a>6. 启动ngrokd服务器</h3><p>请将 bin/ngrokd 放入环境变量中，启动命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ngrokd -domain=&quot;ngrok.morongs.com&quot; -httpAddr=&quot;:8088&quot; -httpsAddr=&quot;:8089&quot;</div></pre></td></tr></table></figure>
+<p>其中，-domain为你的ngrok服务域名，-httpAddr为http服务端口地址，访问形式为：xxx.ngrok.morongs.com:8088，也可设置为80默认端口，-httpsAddr为https服务，同上。</p>
+<p>ngrokd启动后，退出命令行即关闭服务。如果想要在后台运行，则执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nohup ngrokd -domain=&quot;ngrok.morongs.com&quot; -httpAddr=&quot;:8000&quot; &amp;</div></pre></td></tr></table></figure>
+<p>注意末尾需要有 &amp; 号，详细搜索 nohup 了解。<br>关闭服务只需通过：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ps -A   # 找到PID，执行关闭</div><div class="line">$ kill xxxid</div></pre></td></tr></table></figure>
+<h3 id="7-启动ngrok客户端验证效果"><a href="#7-启动ngrok客户端验证效果" class="headerlink" title="7. 启动ngrok客户端验证效果"></a>7. 启动ngrok客户端验证效果</h3><p>由于在准备工作中，已经把 ngrok.morongs.com 的域名解析到服务器上，接下启动客户端测试是否可用。</p>
+<ol>
+<li><p>建立ngrok配置文件：ngrok.cfg</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">server_addr: “ngrok.morongs.com:4443&quot;</div><div class="line">trust_host_root_certs: false</div></pre></td></tr></table></figure>
+<p>server_addr端口默认4443，可通过ngrokd服务端启动修改端口</p>
+</li>
+<li><p>运行客户端，暴露本地4000端口站点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ngrok -subdomain demo -config=./config.cfg 4000</div></pre></td></tr></table></figure>
+<p>回车后，看到这样一个界面，说明启动成功。</p>
+<p><img src="/images/ngrok-qidong.png" alt="启动图"></p>
+</li>
+</ol>
+<h3 id="8-访问页面"><a href="#8-访问页面" class="headerlink" title="8. 访问页面"></a>8. 访问页面</h3><p>浏览器中输入：demo.ngrok.morongs.com，成功访问本地hexo博客4000端口的站点内容：</p>
+<p><img src="/images/ngrok-page.png" alt="博客"></p>
+<p>浏览器输入：127.0.0.1:4040 查看页面请求情况：</p>
+<p><img src="/images/ngrok-xinxi.png" alt="信息"></p>
+<p>至此，搭建成功，测试正常。</p>
+<h2 id="三、参考资料"><a href="#三、参考资料" class="headerlink" title="三、参考资料"></a>三、参考资料</h2><ol>
+<li><a href="https://aotu.io/notes/2016/02/19/ngrok/" target="_blank" rel="external">https://aotu.io/notes/2016/02/19/ngrok/</a></li>
+<li><a href="http://studygolang.com/articles/2655" target="_blank" rel="external">http://studygolang.com/articles/2655</a></li>
+<li><a href="http://bbear.me/shi-yong-a-li-yun-da-jian-zi-ji-de-ngrokfu-wu/" target="_blank" rel="external">http://bbear.me/shi-yong-a-li-yun-da-jian-zi-ji-de-ngrokfu-wu/</a></li>
+<li><a href="https://xicheng412.github.io/2016/09/27/ngrok-config/" target="_blank" rel="external">https://xicheng412.github.io/2016/09/27/ngrok-config/</a></li>
+</ol>
+<h2 id="四、结语"><a href="#四、结语" class="headerlink" title="四、结语"></a>四、结语</h2><p>ngrok提供的内网映射功能，不单单只是用在微信上，像我们平时的demo演示，也可以通过它让不在同一局域网内的人员能够实时看到我们本地开发项目的情况和进度。<br>要知道，工具存在本身就是为了提高我们的效率，不要因为别人使用什么，我们就用什么，关键在于这个工具能否提高目前的工作效率，如果是，请果断学习使用。</p>
+<hr>
+<p>感谢阅读，如需转载，请注明出处。作者：默容。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/technology/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ngrok/">ngrok</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内网映射/">内网映射</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-chengzhangjilu" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/11/27/chengzhangjilu/" class="article-date">
+      <time datetime="2016-11-27T13:39:14.000Z" itemprop="datePublished">2016-11-27</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/27/chengzhangjilu/">《通往财富自由之路》专栏投稿</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>作者: 陈润发<br>微信公众号：默容</p>
+</blockquote>
+<h1 id="我的三个成长收获"><a href="#我的三个成长收获" class="headerlink" title="我的三个成长收获"></a>我的三个成长收获</h1><p>在《得到APP》上这个专栏上线的第一天就购买订阅了，到今天已经过去了100来天，迟迟没有动手写下这段时间来的变化。我在想，这段时间来是否真的收获了是什么、学到了什么，而不是仅仅为了投稿而意想出并不存在的事情。面对真实的自己很重要，这样才能发现自己目前存在什么问题，才有机会去改进。</p>
+<p>这个专栏每周更新的概念都需要实实在在的思考和行动，回顾自己这段时间的变化，虽然看起来很小，但我相信这对于每个敢于做出改变的人来说，从迈出第一步开始就已经是进步了，至少开始行动了。</p>
+<p>来说说自己100来天的变化罢。</p>
+<h2 id="一、认识到注意力的宝贵"><a href="#一、认识到注意力的宝贵" class="headerlink" title="一、认识到注意力的宝贵"></a>一、认识到注意力的宝贵</h2><p>记得在订阅专栏之前，自己的生活总是被各种信息吸引着，即使自己本身就很少看娱乐八卦新闻，却还是会被朋友圈和微博的短视频、朋友的图文段子等吸引了注意力。有时的热点新闻一出，身边的朋友、同事都在讨论，忍不住想要参与话题的冲动也去各种翻阅查找信息。</p>
+<p>订阅了专栏之后，才开始慢慢意识到“注意力”的重要性，才知道这种热点新闻、搞笑视频都是在不断地收割我们的注意力，它们存在的本身是无法给自己带来有价值的信息，无法使自己有所增值。现在每天充斥着大量的无用信息，有娱乐八卦，也有所谓“看法”实际逻辑混乱的文章，稍不注意，这些信息就会进入我们的视线，它们存在本身并不是为了带来信息，而是为了吸引注意力进而转成话题发布者的流量。</p>
+<p>回想之前为了能够和朋友、同事一起讨论热门话题而去翻阅信息，以为能够增加所谓的“谈资”的想法，在意识到问题后的那一瞬间，就像一堵自我围住的高墙一般，怦然倒塌，让自己真正看到真实的世界应该是什么样子的。<strong>有时候，一些概念就像在窗户纸的另一边，没有人帮忙捅破，永远不知道也看不到那一边的样子。直到某一天有人把这个纸张捅破之后，我们才会发现自己之前的世界是多么的糟糕，逻辑观念是多么的混乱。</strong></p>
+<p>现在，因为更新了“注意力”这个概念，在发现有收割注意力的情况时，大脑就会触发感应意识到问题，告诉自己要注意警惕了，需要把这些信息过滤掉，于是调动了自己的行为，关闭了这些信息。这就像是在大脑安装了一个过滤器一样，通过这个过滤器把这些专门收割注意力的信息过滤在外部，而规则是通过自己的思考判断形成的。</p>
+<p>这也是元认知能力在起作用，一个“注意力”的概念进入我们的大脑后，大脑就开始对这个概念相关的信息有所察觉。自己能够去思考这些信息是否对自己有益，如果没有或者发现干脆是在收割注意力，大脑就能意识到问题并立即处理掉。而发现一个有用的知识，大脑会对有用的信息更加专注，注意力高度集中。</p>
+<p>这是个有趣的过程，也是之前从未体会到的过程，使得自己做的事情更有价值，对自己的成长更有帮助。</p>
+<h2 id="二、减少了抱怨的声音"><a href="#二、减少了抱怨的声音" class="headerlink" title="二、减少了抱怨的声音"></a>二、减少了抱怨的声音</h2><p>我总是以为自己的抱怨很少，在读到“最应该戒掉的恶习–抱怨”时，依然想不出自己有抱怨什么。可恰恰就是反复读了这篇文章后，大脑对它的存在有了意识，竟然真的发现了自己在某些地方的抱怨声。</p>
+<p>其实仔细回想的自己生活、工作的场景，就会发现抱怨无数不在。因为合租卫生情况不好抱怨几句室友的话；因为工作要下班了，却临时紧急任务需要马上处理抱怨几句发需求的人等等。它的出现非常的自然，自然到随口说出，自己竟然没有发现。</p>
+<p>更新“抱怨”这个概念之前，我属于在这个“抱怨的大坑”中的人，出现抱怨的情况却丝毫不自知；更新“抱怨”这个概念之后，开始对抱怨有所防范，能够在要抱怨之前，大脑识别到，弹出一个弹出框提示自己要注意了，必须马上停止抱怨，进而真的影响自己的行为，停止了抱怨。</p>
+<p>实际上，在知道之后就会明白抱怨并不能解决任何事情，说得再多还是需要自己亲自动手去处理，这些都不会自动就好。嘴里嘀咕抱怨生活环境卫生差，还是需要动手处理才能使室内环境清新干净；任务紧急需要加班，也不会因为抱怨几句工作量就减少，始终需要行动去处理解决问题。这些抱怨说到底只是说出来图个内心“舒服”，却在无形之中让自己成为一个满身“负能量”的人。</p>
+<p>一个改变是，<strong>当“元认知能力”的概念进入大脑后，发现自己所做的事情都调用这个能力去思考是这样做是否是正确的，如果不正确应该怎么做？这样的能力影响着自己，能够去发现“抱怨”要发生了，去思考“抱怨”带来的问题，从而做出更加正确的选择（停止抱怨）。</strong> 这虽然不是一个立刻就能做到的事，但能够发现它的存在就有机会改正（发现不到问题才是最可怕的），实际也证明这段时间来，抱怨少了很多。</p>
+<h2 id="三、持续做好一件事"><a href="#三、持续做好一件事" class="headerlink" title="三、持续做好一件事"></a>三、持续做好一件事</h2><p>没接触这个栏目之前，“三分钟热度”这个词在我身上就是一个活生生的例子。在那个阶段，我觉得一个知识、技能有趣就会去学习，花不少时间和精力琢磨，可过了一段时间后，又会因为各种原因或者说是借口，最终放弃了。这说到底还是因为自己对这个知识或技能不是有真正的需求，不足以让我即使在遇到困难的问题时也能够耐心的学下去。</p>
+<p>接触这个专栏后，不断地更新概念让我重新思考自己正在做的事，反思后应该做点对自身有益的事情。于是在九月末的时候，我下了一个决定，进入健身房开始健身锻炼身体，又因为“健身安全第一”的概念存在大脑中，自己花了将近一万元的费用来买私教课。教练在旁边指导，除了保证自己的安全、动作标准，还会在旁边打气，一次次突破自己以为的极限，也更加不会偷懒找借口。</p>
+<p>恰好就在这个时候，专栏更新了提高元认知的能力可以是“刻意练习”，这个概念进入大脑后，我意识到其实在健身的时候，针对某个部位的训练，去感受肌肉的发力就是属于“刻意练习”。我能够有意识去思考自己的思考过程中，对某个动作的理解是否到位，也能够有意识的去控制某个部位的发力，感受到由这个“刻意练习”所带来的肌肉的感觉。</p>
+<p>在不知不觉中，元认知能力提高了，也在不知不觉中，“三分钟热度”这个词在我的世界中消失了。这不只是因为健身的影响，也是在不断升级概念中，反思自己问题，改正所带来的影响。有趣的是，在自己<strong>持续把一件事做好时，真的不需要“坚持”这个概念，完全就是那种不去锻炼就难受，不思考升级就会感觉不自在。</strong></p>
+<p>现在看来，那些总是持续做好一件事的人，和那些一直健身的人一样，并不是别人想的那样需要坚持，那些人都是因为对这个有兴趣或者是赋予了重大意义，不去做反到更难受的。而我自己也越做越有趣了，没有所谓的“坚持”和“三分钟热度”的概念。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>其实收获的不止这么多，但这还是需要实实在在去思考，并且行动应用起来才是真正的理解掌握。<strong>关键在于，还是要多关注自己的成长和与自己成长有关的事物，这个思维的转变，能够使得很多之前看似问题的问题都自然而然的不见了。</strong> 就像我之前的注意力被收割、忍不住的抱怨、对待知识或技能的三分钟热度一样，在关注自己的成长后，这些问题都慢慢自动不见了，这是最直接的体会。</p>
+<p>嗯，在成长的道路上，一起共勉。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/life/">生活</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/成长/">成长</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-recommend-books" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -473,77 +720,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/健身/">健身</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/运动/">运动</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-jingli" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/10/03/jingli/" class="article-date">
-      <time datetime="2016-10-03T02:04:55.000Z" itemprop="datePublished">2016-10-03</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/03/jingli/">跟你分享一个故事</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>嗨，我叫陈润发，常用“默容”这个昵称出现在网络上，今天想跟你分享另一个关于我的故事。</p>
-<hr>
-<p>在广东地区，我老家这边，许多父母普遍对教育不太重视，许多人高中之后就没有再继续升学，更有甚者，初中毕业后就开始打工生活。这边讲究什么，讲究的是稳定就好了，能赚到钱就可以了。即使你不读书，每个月能够有3000元人民币左右的收入，对一些父母来说，这样就觉得可以了。</p>
-<p>我也在这样的环境氛围影响下长大。读初中阶段，压根就没有学习的心思，也许你想象不到整个班级，只有四到五个人左右是在听课，其他全部排在书桌上玩，睡觉的睡觉，玩手机的玩手机。在此，就是“学习无用论”的典型案例，许多人就是相信自己学不会，太笨了，学了也没有什么用，于是，一个个放弃了学习。而我本人呢，很不幸，也是其中的一员。</p>
-<p>中考成绩出来后，想也知道，只能去镇上的学校读高中，市里的远远达不到要求。这样的结果，是教育的问题，还是自己的问题，也许都各一半吧。也在那时心想，与其进入高中后继续放弃学习，读不上大学，不如去技术学校，学点技术。就这样，我选择去了市里的技术学校，在那自己的想法慢慢开始发生了转变。</p>
-<h2 id="学校生活"><a href="#学校生活" class="headerlink" title="学校生活"></a>学校生活</h2><p>新的学校，做了自己的一次选择，选择了自己喜欢的电脑专业，父母没有进行干预，到是挺支持我。有趣的是，在初中生活，几乎没有对哪个老师有过好感，可进入技校后，两年的技校生活中，却让我跟自己老师的关系挺好，也许是因为在他们身上看不到作为老师居高临下的感觉。</p>
-<p>有这样一个现象，我们总对没有做过的事情心生想念，特别想要去尝试，就像没结婚的有向往结婚的生活的人，结婚的也有怀念一个人的生活。</p>
-<p>我们总是喜欢在事后回味生活，不时后悔之前做过的一些事情，</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/life/">生活</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活/">生活</a></li></ul>
     </div>
 
       
@@ -1144,247 +1320,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/成长/">成长</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-macshiyong" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/27/macshiyong/" class="article-date">
-      <time datetime="2016-06-27T15:10:41.000Z" itemprop="datePublished">2016-06-27</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/27/macshiyong/">Mac使用技巧</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><img src="/images/macbookpro.jpeg" alt="MacBook Pro"></p>
-<p>苹果的产品我们总是觉得它看起来高大上，可实际上，它用起来也是如此。如果能够很好地去使用它给我们带来的功能，你会发现对自己效率的提升不止一点。</p>
-<p>无论是我们下载的新软件，还是新的设备，想要快速入门使用的最好方法是去看它的官方文档，之后再去熟悉它的快捷方式以及使用技巧。</p>
-<p>对于Mac电脑，与之前一直使用的win相比，有许多操作上的不同，于是在购买不到一月的时间，配置各种个人操作习惯的快捷方式，为以后开发能够更加的快速。</p>
-<p>对于Mac，我用的是MacBook Pro电脑，目前使用的shell为zsh。别被命令行下着，就那几个单词，此文不涉及太多代码，不是程序开发也可阅读。以下，我们先一步一步了解，分为以下几个部分：</p>
-<ol>
-<li>Mac介绍</li>
-<li>鼠标快捷方法熟悉</li>
-<li>键盘快捷键熟悉</li>
-<li>终端熟悉</li>
-<li>软件推荐</li>
-<li>总结</li>
-</ol>
-<h2 id="一、Mac介绍"><a href="#一、Mac介绍" class="headerlink" title="一、Mac介绍"></a>一、Mac介绍</h2><p>我们知道Mac的系统是OS X(不过在今年的WWDC大会上，已经宣布更名为吗macOS了)，它的强大不止是界面舒服，还是它的系统特别的流畅。</p>
-<p>对于一直接触win系统的人来说，看到这样的系统可能不太习惯，不过看看以下几个部分就基本熟悉了。</p>
-<pre><code>1. 系统设置
-2. 文件管理
-3. 软件管理
-</code></pre><p>对这几个方面了解就差不多了。</p>
-<p><strong>系统设置：</strong> 在这里可以设置个人的使用习惯，位置在 左上角的“苹果图标－&gt;系统偏好设置”，进去之后，熟悉了解电脑各个部分的设置在哪里，比如我们稍后讲到的鼠标、键盘等，都在这里可以设置。</p>
-<p><strong>文件管理：</strong> 打开Finder，看到如下载、桌面、应用程序的，一看我们就知道，下载的文件或软件默认在下载图标那个位置，我们可以在Finder的偏好设置里面，设置我们的常用文件夹放在左栏或者管理“标记”等。</p>
-<p><strong>软件管理：</strong> 在Finder的左栏中就可以看到，我们安装软件，只需要在网上下载好，把app拉到应用程序中即可，或者是在App Store下载，当然还有更方便的就是实用命令行，当然这个命令是需要安装相关环境的，稍后介绍。而软件删除的，直接在应用管理，右键菜单移除即可。</p>
-<p>对于Mac我们需要了解的就是它的一些操作方式，我们最长使用的处理软件之外，就是这些软件管理设置等，了解清楚就能够使用了。</p>
-<h2 id="二、鼠标快捷方法熟悉"><a href="#二、鼠标快捷方法熟悉" class="headerlink" title="二、鼠标快捷方法熟悉"></a>二、鼠标快捷方法熟悉</h2><p>我喜欢Mac的地方就是它的 鼠标/触控板 实在太强大了，减少了好多时间。</p>
-<p>首先，我们进入“个人偏好设置-&gt;触控板”，看到里面的设置，开始调整自己需要的手势和鼠标速度等。我习惯把所有的快捷方式全部‘勾上’，然后就开始熟悉它。</p>
-<p><img src="/images/mac-shubiao.png" alt="鼠标"></p>
-<p>对，把所有的勾上，然后看“更多手势”那里，熟悉每一个操作，30分钟都不用。</p>
-<p>我们在浏览网页就可以采用2个手指快速的切换或后退，看图片就可以用双手放大缩小，也可以使用3个手指滑上查看打开的应用等。当然，还有强大的快捷键。</p>
-<p>要做的就是，把鼠标的技巧熟悉，在以后就能够非常自然的使用，能够节省许多时间。</p>
-<p>还有就是，可以购买个苹果鼠标，很多人觉得鼠标贵，配个普通的鼠标，其实就像你穿西装配个休闲鞋一样，发挥不了它的优势。</p>
-<h2 id="三、键盘快捷键熟悉"><a href="#三、键盘快捷键熟悉" class="headerlink" title="三、键盘快捷键熟悉"></a>三、键盘快捷键熟悉</h2><p>快捷键无论是在使用软件还是电脑系统，都是必须熟悉的，因为你在使用鼠标来回点击切换的时候，别人已经做了很多事情了，我们的时间很宝贵，能省一点就是一点。</p>
-<p>有几个基本的符号需要记住：</p>
-<pre><code>Command ⌘
-Option ⌥
-Control ⌃
-Shift ⇧
-Caps Lock ⇪
-</code></pre><p>相关操作，都是以这些键进行。以下是几个比较常用的快捷键，需要熟悉：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">快捷键</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Command-X</td>
-<td style="text-align:left">剪切</td>
-</tr>
-<tr>
-<td style="text-align:left">Command-C</td>
-<td style="text-align:left">拷贝</td>
-</tr>
-<tr>
-<td style="text-align:left">Command-V</td>
-<td style="text-align:left">粘贴</td>
-</tr>
-<tr>
-<td style="text-align:left">Command-Z</td>
-<td style="text-align:left">撤销</td>
-</tr>
-<tr>
-<td style="text-align:left">Command-F</td>
-<td style="text-align:left">查找</td>
-</tr>
-<tr>
-<td style="text-align:left">Command-M</td>
-<td style="text-align:left">窗口最小化</td>
-</tr>
-<tr>
-<td style="text-align:left">Command-N</td>
-<td style="text-align:left">新建窗口或文稿</td>
-</tr>
-<tr>
-<td style="text-align:left">Command-O</td>
-<td style="text-align:left">打开所选项</td>
-</tr>
-<tr>
-<td style="text-align:left">Command-S</td>
-<td style="text-align:left">存储当前文稿</td>
-</tr>
-<tr>
-<td style="text-align:left">Command-Q</td>
-<td style="text-align:left">退出应用</td>
-</tr>
-<tr>
-<td style="text-align:left">Command-Shift-3</td>
-<td style="text-align:left">屏幕快照，整屏</td>
-</tr>
-<tr>
-<td style="text-align:left">Command-Shift-4</td>
-<td style="text-align:left">屏幕快照，部分窗口</td>
-</tr>
-</tbody>
-</table>
-<p>另外，其他设置，如切换输入法、检索工具等，根据你的习惯设置快捷方式，我对原来的快捷方式重置为如下：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">快捷键</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Command-空格键</td>
-<td style="text-align:left">切换输入法</td>
-</tr>
-<tr>
-<td style="text-align:left">Option-空格键</td>
-<td style="text-align:left">Spotlight检索工具</td>
-</tr>
-</tbody>
-</table>
-<p>记住，检索工具能够帮你快速的查找电脑的文件或应用，不用担心文件乱（文件整理其实也挺重要），通过检索工具就可以找到，所以严重良好的命名习惯。</p>
-<p>当然，常用的偏好设置、显示桌面快捷键也可以熟悉，操作也是很频繁，这样就少几个鼠标的动作操作：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">快捷键</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Command-,</td>
-<td style="text-align:left">偏好设置</td>
-</tr>
-<tr>
-<td style="text-align:left">Command-F3</td>
-<td style="text-align:left">显示桌面</td>
-</tr>
-<tr>
-<td style="text-align:left">F3</td>
-<td style="text-align:left">多屏与打开应用查看</td>
-</tr>
-<tr>
-<td style="text-align:left">F4</td>
-<td style="text-align:left">launchpad</td>
-</tr>
-</tbody>
-</table>
-<p>还有更多的快捷键说明，我们只需要记住操作频繁的几个就好了，其他的可以看苹果官网的文档，<a href="https://support.apple.com/zh-cn/HT201236" target="_blank" rel="external">点击这里</a>查看更多快捷键。</p>
-<h2 id="四、终端熟悉"><a href="#四、终端熟悉" class="headerlink" title="四、终端熟悉"></a>四、终端熟悉</h2><p>终端命令对于程序员来说，是最常用的工具，而它给我们带来的功能是非常强大又高效的。其实这个工具对于其他人来说，也是可以熟悉使用的，因为它的命令并不复杂。好用的工具就可以学。</p>
-<p>我们只需要记住几个简单的命令即可：</p>
-<pre><code>cd   #目录切换
-ls   #显示当前目录内容
-touch   #新建文件
-rm   #移除文件或目录
-mv   #移动文件或目录
-nano   #编辑文本文件
-open   #打开文件
-pwd    #显示当前完整路径
-clear  #清除屏幕
-sudo   #管理员身份执行命令
-</code></pre><p>那么现在可以打开检索工具或launchpad，找到“终端Terminal”打开，试试这些命令的用处。比如根目录下的img文件，输入：</p>
-<pre><code>cd img
-</code></pre><p>就可以进入该文件夹并查看文件内容。</p>
-<p>我们知道，App Store很难连上，安装软件也挺麻烦的，而使用Homebrew，就可以使我们能够快速地安装与卸载软件。把以下代码复制粘贴在终端工具中：</p>
-<pre><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-</code></pre><p>执行完之后，就可以通过它来安装软件啦，比如你想安装QQ，那么直接输入：</p>
-<pre><code>brew cask install QQ
-</code></pre><p>回车之后，我们就可以看到正在下载QQ了，只需等待下载完成之后，在launchpad中就可以看到安装的QQ软件，而卸载也是如此：</p>
-<pre><code>brew cask uninstall QQ
-</code></pre><p>想了解更多，可以点击这里<a href="http://brew.sh/" target="_blank" rel="external">brew</a>，和<a href="https://caskroom.github.io/" target="_blank" rel="external">cask</a>的看看Homebrew的相关介绍。</p>
-<p>还有就是，终端工具有很多功能，可以通过<strong>aliases</strong>配置一些命令，这样就可以减少很多重复工具，2个字母就能做完成许多任务，是不是挺想试试。Google搜索：mac terminal aliases，看看相关文章介绍，或者在我后续文章将介绍到。</p>
-<h2 id="五、软件推荐"><a href="#五、软件推荐" class="headerlink" title="五、软件推荐"></a>五、软件推荐</h2><p>苹果的软件，虽然说有很多用不了，不过好用的软件却也是非常爽，所以很多收费的软件，如果能够提高自己的效率，该买的还是要买。</p>
-<ol>
-<li>TotalFinder   #文件管理，可以像浏览器一样的管理多个窗口</li>
-<li>iTerm         #命令行工具，比自带的还要强大很多</li>
-<li>Alfred        #检索工具，比自带的还要强大，还可以设置搜索引擎</li>
-<li>1password     #密码账户管理</li>
-<li>Moom          #多屏切换管理</li>
-</ol>
-<p>软件在于适合自己就是最好的，想要知道更多好用的软件，<a href="https://github.com/hzlzh/Best-App/blob/master/README.md" target="_blank" rel="external">点击这里</a>告诉你。</p>
-<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>对于陌生的系统或软件，最好就是先看官方的介绍文档，再去Google相关的快捷键，操作方式，这样的才能快速了解。无非就是：</p>
-<pre><code>1. 找到重要的部分去了解
-2. 熟悉相关操作的快捷方式
-3. 设置个人偏好，简化操作步骤
-4. 多重复练习
-</code></pre><p>做这些操作，都是在为以后节省时间，就像每天<strong>处理重复的事情就需要思考如何简化或者流程化</strong>。为了能够节省时间，前期的工作都是必须的，有些懒不能偷，会在以后还回来，所以入门是就应该<strong>找方法并反复琢磨</strong>。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/">Mac</a></li></ul>
     </div>
 
       
